@@ -1,0 +1,129 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container_block  %}
+
+<!-- Masthead -->
+   <header class="box text-white text-center">
+    <div class="overlay"></div>
+    <div class = "box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Career @ A2zhomeservices</h1>
+          <h3> Work with us to get most out of your skills. </h3>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header> 
+
+
+<!-- tab menu-->
+<br>
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-sm-6">
+  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="content-left" > 
+    <div class="login-form" >
+    <form action="create_career" method="post">
+    {% csrf_token %}
+        <h4 class="text-center">Interested in working with us? </h4>  
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Your Name</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Name" required="required">				
+            </div>
+        </div>    
+        
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Mobile</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="mobile" placeholder="Mobile" required="required">				
+            </div>
+        </div>    
+     
+     <div class="form-group">
+            <div class="lable">
+        <label for="exampleInputEmail1">Message</label>
+        </div>
+        	 <div class="input-group">
+                
+                <textarea class="form-control" name="message" value="" rows="4" id="summary" style="height:70px;" placeholder="Enter Problem in details" ></textarea>
+                       		
+            </div>
+        </div>  
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-paper-plane"></i> Send Message</button>
+        </div>
+  </form>
+</div>
+
+       </div>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+  <div class="content-left"> 
+      <div class="alert-btn">
+       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+       Our inspection/home visit is  <strong> free  </strong>to give estimate for the job.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      </div>   
+  </div>
+  </div>
+</div>
+
+  </div>
+ 
+<div class="col-sm-6">
+    <br> <br>
+<div class="container-fluid">
+
+<ul> At A2zhomeservice we offer several growth opportunities and platform 
+to proove your skills and work with one of the most dynamic team. 
+ </ul>
+
+<hr>
+<h4>Who can apply? </h4>
+
+<ul>
+ <li><strong> Experience Technician (Join us as Technician)</strong>
+ (AC, Washing Machine, Fridge Technicians)</li>
+ <hr>
+ <li><strong> Fresher Candidate (Join us for training program) </strong> </li>
+ <hr> 
+ If you are ready to work with A2zhomeservice as technician or looking to become a technician,
+  please fill the form and we would contact you for more details.
+</ul>
+
+</div>
+</div>
+
+    </div>
+  </div>
+</div>  
+
+ {% endblock %}
+
+

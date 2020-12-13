@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block container_block  %}
+
+<!-- Masthead -->
+   <header class="box text-white text-center">
+    <div class="overlay"></div>
+    <div class = "box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Thank You for booking appointment </h1>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </header> 
+ 
+ <div class="alert alert-success" role="alert">
+ <h2> Awesome!</h2>
+  <h4 style={text-align: center;}><strong> You have successfully booked appointment with us</strong></h4>
+     <h4 style={text-align: center;}>Our support member will contact you soon </h4>
+</div>
+
+ {% endblock %}

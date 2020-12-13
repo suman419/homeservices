@@ -1,0 +1,117 @@
+
+<div id="myForm" class="login-form popup-form" >
+    <form  action="{{service_detail.service_name}}/booking_confirm" method="post">
+    <button type="button" class="close-btn btn-danger" onclick="closeForm()">&times;</button>
+    {% csrf_token %}
+        <h4 class="text-center">Book Appointment Online</h4>   
+        
+         <div class="form-group">
+                  <label class="control-label">When you need Service?</label>
+                  <div class='input-group date' id='datepicker'>
+                     <input type='date' class="form-control" name="date" placeholder="Select Date" />
+                     <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                  </div>
+        </div>
+
+		<div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Requirements?</label>
+        </div>
+        {% for type in service_type %}
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="option{{type.service_type}}" value="{{type.service_type.id}}">
+        <label class="form-check-label" for="option{{type.service_type}}">{{type.service_type}}</label>
+        </div>
+        {% endfor %}
+        </div>    
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Mobile</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="phone" placeholder="Mobile" required="required">				
+            </div>
+        </div>       
+        <div class="form-group">
+            <button type="submit" class="btn btn-info login-btn btn-block">Book continue</button>
+        </div>
+        
+    </form>
+</div>
+
+<!--callback request form -->
+
+<div id="callback" class="login-form popup-form" >
+    <form  action="{{service_detail.service_name}}/create_callback_request" method="post">
+    <button type="button" class="close-btn btn-danger" onclick="closecallForm()">&times;</button>
+    {% csrf_token %}
+        <h4 class="text-center">Callback Request for {{service_detail.service_name}} In {{service_detail.city}}</h4>
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Name</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Your Name" required="required">				
+            </div>
+        </div> 
+   
+   <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="phone" placeholder="Mobile" required="required">				
+            </div>
+        </div>   
+
+    <div class="form-group">
+        	<div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-calendar"></span>
+                    </span>                    
+                </div>
+                      <select name = 'day' class="form-control" id="inlineFormCustomSelectPref">
+                                    <option selected value="Call Me Back"> Call Me Back </option>
+                                    <option value="Call Me Now"> Call Me Now </option>
+									<option value="After One Hour">After One Hour</option>
+                                    <option value="After Two hour">After Two hour</option> 
+                                    <option value="Call me any Time">Call me any Time</option>        
+                    </select>     		
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="message" placeholder="Write Message Here" required="required">				
+            </div>
+        </div>   
+            
+        <div class="form-group">
+            <button type="submit" class="btn btn-info ">Send Request</button>
+        </div>
+        
+    </form>
+</div>
+

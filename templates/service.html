@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block container_block  %}
+<!-- Masthead -->
+   <header class="box text-white text-center">
+    <div class="overlay"></div>
+    <div class = "box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">{{service_detail.service_name}} In {{service_detail.city}}</h1>
+          <h3><i class="fa fa-check-square-o"></i> Checked Expert Technician
+          <i class="fa fa-check-square-o"></i> Free Inspection
+          <i class="fa fa-check-square-o"></i> 7 days warranty. </h3>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header> 
+
+
+<!-- tab menu-->
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-sm-8">
+<div class = "button-box">
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation" style='margin-right:16px'>
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa fa-calendar"></i>
+    <span class="hover-color"> Book Online  </span></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <i class="fa fa-money"></i> <span class="hover-color"> Service Charges </span> </a>
+  </li>
+</ul>
+      
+</div>
+  
+  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="content-left" > 
+
+    <div class="login-form" >
+    <form action=" {{service_detail.service_name}}/booking_confirm" method="post">
+    {% csrf_token %}
+        <h2 class="text-center">Book Appointment Online</h2>   
+       
+            
+       <div class="form-group">
+                  <label class="control-label">Appointment Time</label>
+                  <div class='input-group date' id='datepicker'>
+                     <input type='date' class="form-control" name="date" placeholder="Select Date" />
+                     <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                  </div>
+               </div>
+
+		<div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Requirements?</label>
+        </div>
+{% for type in service_type %}
+<div class="form-check form-check-inline">
+  <input class="form-check-input" name='requirement' type="checkbox" id="option{{type.service_type.id}}" value="{{type.service_type}}">
+  <label class="form-check-label" for="option{{type.service_type.id}}">{{type.service_type}}</label>
+</div>
+ {% endfor %}
+
+        </div>    
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Mobile</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="mobile" placeholder="Mobile" required="required">				
+            </div>
+        </div>       
+        <div class="form-group">
+            <button type="submit" class="btn btn-info login-btn btn-block">Book continue</button>
+        </div>
+  </form>
+</div>
+
+       </div>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+  <div class="content-left"> 
+      <div class="alert-btn">
+       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+       Our inspection/home visit is  <strong> free  </strong>to give estimate for the job.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      </div>
+   <!--accordion start--> 
+   {% for charge in service_charge %}
+   {% for k, v in charge.items %}
+  <button class="accordion">{{k}}</button>
+	<div class="panel">
+     {% for item in v %}
+	  <p> {{item.issue_type}}  <span class="span">  {{item.price}}</span></p>
+      {% endfor %}
+  </div>
+  {% endfor %}
+	{% endfor %}
+  <!--booking start-->
+<br> 
+<h4>Ready to Book appointment?</h4>
+{% include 'booking_form.html' %}
+<button type="button" onclick="openForm()" class="btn btn-danger"><i class="fa fa-calendar"></i> <span class="hover-color"> Book Online  </span></button>
+<button type="button" onclick="opencallForm()" class="btn btn-info"><i class="fa fa-phone"></i> <span class="hover-color"> Callback Request  </span></button>
+        
+<br>
+<br>
+
+
+<!--accordion end-->    
+  </div>
+  </div>
+</div>
+
+  </div>
+ 
+<div class="col-sm-4">
+    
+<div class="sidebar">
+
+<div class="main-search-box  text-center text-success margin-top-5 padding-top-10 padding-bottom-5 margin-bottom-20">
+<h4 class="text-danger">Call: <a onclick="callReporting('ServiceSidebar');" href="tel:+91-821-058-7612">91-821-058-7612</a></h4>
+<p> To Book via Phone (9 AM to 8 PM) or </p>
+{% include 'booking_form.html' %}
+<button type="button" onclick="openForm()" class="btn btn-danger"><i class="fa fa-calendar"></i> <span class="hover-color"> Schedule Appointment Online  </span></button>
+{% comment %} <a href="#booking" class="details"><span class="fa fa-calendar"></span> Schedule Appointment Online</a> {% endcomment %}
+{% comment %} <p><i class="fa fa-envelope"></i> <strong>E-Mail:</strong> <span><a href="/cdn-cgi/l/email-protection#cea7a0a8a18ebdabb8afa3afbcbae0ada1a3"><span class="__cf_email__" data-cfemail="92fbfcf4fdd2e1f7e4f3fff3e0e6bcf1fdff">[email&#160;protected]</span></a></span></p> {% endcomment %}
+<a class="close"></a>
+</div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<!--new tabs-->
+
+
+
+
+
+{% endblock %}

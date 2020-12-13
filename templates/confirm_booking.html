@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container_block  %}
+<!-- Masthead -->
+   <header class="box text-white text-center">
+    <div class="overlay"></div>
+    <div class = "box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Complete your Booking</h1>
+          
+          <h3> Share your details for Ac Repair Booking in Patna <br>
+          <i class="fa fa-check-square-o"></i> Checked Expert Technician
+          <i class="fa fa-check-square-o"></i> Free Inspection
+          <i class="fa fa-check-square-o"></i> 7 days warranty. </h3>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header> 
+
+
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-sm-12">
+
+    <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="content-left" > 
+
+    <div class="login-form" >
+    <form action="booking_completed" method="post">
+    {% csrf_token %}
+         <h2> Booking Details </h2>
+
+        <div class="row with-forms"> 
+          <div class="col-md-6"> 
+            <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Your Name</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required="required">				
+            </div>
+        </div>      
+          </div>
+
+          <div class="col-md-6">
+          <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Email</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                    </span>                    
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Enter email" required="required">				
+            </div>
+        </div>      
+           </div>
+        </div>
+
+        <div class="form-group">
+            <div class="lable">
+        <label for="exampleInputEmail1">Address</label>
+        </div>
+        	 <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-envelope"></span>
+                    </span>                    
+                </div>
+                      <input type='text' class="form-control" name="address" placeholder="Enter Your Address" />   		
+            </div>
+        </div> 
+            
+
+		<div class="row with-forms"> 
+          <div class="col-md-6"> 
+            <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Landmark</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-home"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="landmark" placeholder="Enter Landmark" required="required">				
+            </div>
+        </div>      
+          </div>
+
+          <div class="col-md-6">
+          <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">City</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-circle"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="city" placeholder="Enter City" required="required">				
+            </div>
+        </div>      
+           </div>
+        </div>
+   
+     <div class="row with-forms"> 
+          <div class="col-md-6"> 
+            <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1"><strong>OTP Sent on: {{phone_number}}</strong></label>
+        </div>
+            <div class="input-group"> 
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="otp" placeholder="Enter OTP XXXX" required="required">				
+            </div>
+        </div>      
+          </div>
+
+          <div class="col-md-6">
+          <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">When do you Need Service?</label>
+        </div>
+             <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-calendar"></span>
+                    </span>                    
+                </div>
+                      <select name = 'appointment_date' class="form-control" id="inlineFormCustomSelectPref">
+                                    <option selected value="{{appointment_date}}"> {{appointment_date}} </option>				       
+                    </select>     		
+            </div>
+
+            {% comment %} <div class="input-group">
+                <button name ="appointment_date" value="{{appointment_date}}" class="widget-button"><i class="fa fa-calendar"></i> {{appointment_date}}</button>				
+            </div> {% endcomment %}
+        </div>      
+           </div>
+        </div>
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Phone</label>
+        </div>
+        	<div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-calendar"></span>
+                    </span>                    
+                </div>
+                      <select name = 'phone_number' class="form-control" id="inlineFormCustomSelectPref">
+                                    <option selected value="{{phone_number}}"> {{phone_number}} </option>
+									       
+                    </select>     		
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="lable">
+        <label for="exampleInputEmail1">Instructions (optional)</label>
+        </div>
+        	 <div class="input-group">
+                
+                <textarea class="form-control" name="notes" value="" rows="4" id="summary" style="height:70px;" placeholder="Enter Problem in details" ></textarea>
+                       		
+            </div>
+        </div>    
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-info login-btn btn-block">Confirm Booking</button>
+        </div>
+        
+    </form>
+</div>
+
+       </div>
+  </div>
+  </div>
+  </div>
+
+    
+{% comment %} <div class="sidebar">
+
+<div class="main-search-box  text-center text-success margin-top-5 padding-top-10 padding-bottom-5 margin-bottom-20">
+<h4 class="text-danger">Call: <a onclick="callReporting('ServiceSidebar');" href="tel:+91-821-058-7612">91-821-058-7612</a></h4>
+<p> To Book via Phone (9 AM to 8 PM) or </p>
+<a href="#booking" class="details"><span class="fa fa-calendar"></span> Schedule Appointment Online</a>
+<a class="close"></a>
+</div>
+
+</div> {% endcomment %}
+
+
+  </div>
+  </div>
+
+ {% endblock %}

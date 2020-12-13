@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container_block  %}
+<br>
+{{service.service_name}}
+
+<br>
+
+<div class="tch-img">
+                    
+ <img class="card-img-top" src={{ service.image.url }} class="img-responsive" alt="" width="750px" height="420px">
+						
+</div>
+<br>
+{% endblock %}
+
+

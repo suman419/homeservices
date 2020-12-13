@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block container_block  %}
+<!-- Masthead -->
+   <header class="box text-white text-center">
+    <div class="overlay"></div>
+    <div class = "box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Contact Us</h1>
+          <h3><i class="fa fa-check-square-o"></i> Checked Expert Technician
+          <i class="fa fa-check-square-o"></i> Free Inspection
+          <i class="fa fa-check-square-o"></i> 7 days warranty. </h3>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header> 
+
+
+<!-- tab menu-->
+<div class="container">
+  <div class="row sticky-wrapper">
+    <div class="col-sm-8">
+
+  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="content-left" > 
+
+    <div class="login-form" >
+    <form action="create_contact" method="post">
+    {% csrf_token %}
+        <h2 class="text-center">Send Us a Message </h2>  
+          <br>
+        <div class="row with-forms"> 
+          <div class="col-md-6"> 
+            <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Your Name</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required="required">				
+            </div>
+        </div>      
+          </div>
+
+          <div class="col-md-6">
+          <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Mobile</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                    </span>                    
+                </div>
+                <input type="text" class="form-control" name="mobile" placeholder="Enter mobile number" required="required">				
+            </div>
+        </div>      
+           </div>
+        </div> 
+       
+
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputEmail1">Email</label>
+        </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                    </span>                    
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required">				
+            </div>
+        </div>    
+       
+        <div class="form-group">
+        <div class="lable">
+        <label for="exampleInputSubject">Subject</label>
+        </div>
+        
+        <select class="form-control" name="subject" type="text" id="subject" placeholder="Subject*" required="required">
+      <option value="">Select from List</option>
+      <option>Service Enquiry</option>
+      <option>Service Provider Tieup</option>
+      <option>Complain/ Feedback</option>
+      <option>Others</option>
+      </select>  
+      </div>
+     
+     <div class="form-group">
+            <div class="lable">
+        <label for="exampleInputEmail1">Message</label>
+        </div>
+        	 <div class="input-group">
+                
+                <textarea class="form-control" name="message" value="" rows="4" id="summary" style="height:70px;" placeholder="Enter Problem in details" ></textarea>
+                       		
+            </div>
+        </div>  
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-info"><i class="fa fa-paper-plane"></i> Send Message</button>
+            {% comment %} <button type="submit" class="btn btn-info login-btn">Send Message</button> {% endcomment %}
+        </div>
+  </form>
+</div>
+
+       </div>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+  <div class="content-left"> 
+      <div class="alert-btn">
+       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+       Our inspection/home visit is  <strong> free  </strong>to give estimate for the job.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      </div>
+   <!--accordion start--> 
+
+
+<!--accordion end-->    
+  </div>
+  </div>
+</div>
+
+  </div>
+ 
+<div class="col-sm-4">
+    
+<div class="sidebar">
+
+<div class="main-search-box  text-center text-success margin-top-5 padding-top-10 padding-bottom-5 margin-bottom-20">
+<h4 class="text-danger">Call: <a onclick="callReporting('ServiceSidebar');" href="tel:+91-821-058-7612">91-821-058-7612</a></h4>
+<p> To Book via Phone (9 AM to 8 PM) or </p>
+<a href="service_list" class="details"><span class="fa fa-calendar"></span> Schedule Appointment Online</a>
+{% comment %} {% include 'booking_form.html' %}
+<button type="button" onclick="openForm()" class="btn btn-danger"><i class="fa fa-calendar"></i> <span class="hover-color"> Schedule Appointment Online  </span></button> {% endcomment %}
+
+<a class="close"></a>
+</div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<!--new tabs-->
+
+
+
+{% endblock %}
